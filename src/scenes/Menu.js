@@ -46,7 +46,8 @@ class Menu extends Phaser.Scene{
           // While easy requires aim
           game.settings = {
             spaceshipSpeed: 3,
-            gameTimer: 60000    
+            gameTimer: 60000,
+            pointsToSecRatio: 1/10
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    
@@ -55,7 +56,8 @@ class Menu extends Phaser.Scene{
           // ultrakill murderdeath gigaking mode
           game.settings = {
             spaceshipSpeed: 4,
-            gameTimer: 45000    
+            gameTimer: 45000,
+            pointsToSecRatio: 1/30    
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    

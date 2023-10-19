@@ -63,13 +63,23 @@ class Play extends Phaser.Scene{
         // Timer fun
         this.gameOver = false;
 
-        scoreConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
                 this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
                 this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5);
                 this.gameOver = true;
         }, null, this);
+        
+        // Speed the ships up after half of the initial game time has elapsed
+        this.clock2 = this.time.delayedCall(game.settings.gameTimer/2, () => {
+            this.ship01.speedup(2);
+            this.ship02.speedup(2);
+            this.ship03.speedup(2);
+        }, null, this);
 
+        // Creating the seconds left timer
+        this.p1Time = game.settings.gameTimer/1000
+        this.timeDisplay = this.add.text(game.config.width - borderUISize - borderPadding - scoreConfig.fixedWidth, borderUISize + borderPadding*2, this.p1Time, scoreConfig);
+        scoreConfig.fixedWidth = 0;
     }
 
     update() {
@@ -98,6 +108,10 @@ class Play extends Phaser.Scene{
             this.p1Rocket.reset()
             this.shipExplosion(this.ship01)
         }
+
+        // Update the timer
+        this.p1Time = Math.ceil((this.clock.delay - this.clock.elapsed)/1000);
+        this.timeDisplay.text = this.p1Time;
       }
 
       checkCollision(rocket, ship){
@@ -122,5 +136,8 @@ class Play extends Phaser.Scene{
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.sound.play('sfx_explosion');
+
+        // Increase the timer
+        this.clock.delay += (ship.points * game.settings.pointsToSecRatio * 1000)
       }
 }
