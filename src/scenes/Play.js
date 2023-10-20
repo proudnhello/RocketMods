@@ -20,7 +20,7 @@ class Play extends Phaser.Scene{
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00ff00).setOrigin(0,0);
 
         // The small ship is created up here b/c he is no longer the same color as the borders, and as such needs to be under them
-        this.smallShip01 = new SmallSpaceship(this, game.config.width + borderUISize*6, borderUISize*7 + borderPadding*6, 'smallShip', 0, 50).setOrigin(0, 0);
+        this.smallShip01 = new SmallSpaceship(this, game.config.width + borderUISize*6, borderUISize*8 + borderPadding*6, 'smallShip', 0, 50).setOrigin(0, 0);
 
         // White borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
@@ -136,7 +136,9 @@ class Play extends Phaser.Scene{
       shipExplosion(ship){
         ship.alpha = 0;
 
-        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
+        let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0)
+        // Scale the size of the explosion based on the size of the ship
+        boom.setScale(ship.scaleFactor)
         boom.anims.play('explode');
         boom.on('animationcomplete', () => {
             ship.reset();

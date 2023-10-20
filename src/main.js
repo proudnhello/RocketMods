@@ -9,6 +9,7 @@ Some speed and timing values may be sightly funky, as my monitor run at 144fps, 
 Mods:
 Speedup after 30 seconds (1)
 For this one, I actually made it happen after half the original time on the clock had elipsed, to make it more dynamic for the expert difficultly
+
 Player rocket control after firing (1)
 
 Add a seconds left timer (3)
@@ -18,7 +19,11 @@ For this one, I added a new property to the game settings object, the points to 
 seconds. To do this, all I did was add to the delay of the object returned by the delayedCall. With the settings I have right now, destroying a ship on normal grants 
 1/10 of the earned points in seconds, while hard grants 1/30th of a second per point.
 
-Total -> 10
+Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points (5)
+Not remotely important, but I like my angry little small spaceship. He's cute :). He's also worth 50 points, and has a new property added to both him and the normal ships to 
+scale the explosion to fit him.
+
+Total -> 15
 
 KNOWN BUGS:
 The explosion animation exists on top of the boundaries, if a ship is destoryed right at the edge of the canvas. 
