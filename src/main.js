@@ -2,7 +2,7 @@
 Moore Macauley
 Rocket Patrol 2: Rock Harder: the Revengeance
 Featuring Legally Distinct Deamon Hunter from the Satan May Weep Series and Knuckles
-~0 hours as of time of writing (here's to hoping I update it later)
+Roughly 2.5 hours. Spent an afternoon from roughly 15-16, then from 17-18:30
 
 Some speed and timing values may be sightly funky, as my monitor run at 144fps, and I think that's making everything run faster
 
