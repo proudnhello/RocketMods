@@ -12,6 +12,9 @@ For this one, I actually made it happen after half the original time on the cloc
 
 Player rocket control after firing (1)
 
+Create 4 new explosion sound effects and randomize which one plays on impact (3)
+You can find these as explosion1-4.wav. All were made with https://sfxr.me/
+
 Add a seconds left timer (3)
 
 Implement a new timing/scoring mechanism that adds time to the clock for sucessful hits (5)
@@ -23,7 +26,7 @@ Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster,
 Not remotely important, but I like my angry little small spaceship. He's cute :). He's also worth 50 points, and has a new property added to both him and the normal ships to 
 scale the explosion to fit him.
 
-Total -> 15
+Total -> 18
 
 KNOWN BUGS:
 The explosion animation exists on top of the boundaries, if a ship is destoryed right at the edge of the canvas. 

@@ -147,7 +147,26 @@ class Play extends Phaser.Scene{
         })
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
+        this.explosionSelector = Math.floor(Math.random()*5)
+        console.log(this.explosionSelector)
+        switch(this.explosionSelector){
+            case 0:
+                this.sound.play('sfx_explosion0');
+                break
+            case 1:
+                this.sound.play('sfx_explosion1');
+                break
+            case 2:
+                this.sound.play('sfx_explosion2');
+                break
+            case 3:
+                this.sound.play('sfx_explosion3');
+                break
+            case 4:
+                this.sound.play('sfx_explosion4');
+                break
+        }
+        
 
         // Increase the timer
         this.clock.delay += (ship.points * game.settings.pointsToSecRatio * 1000)
