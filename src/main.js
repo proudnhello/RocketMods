@@ -14,11 +14,15 @@ Player rocket control after firing (1)
 Add a seconds left timer (3)
 
 Implement a new timing/scoring mechanism that adds time to the clock for sucessful hits (5)
-For this one, I added a new property to the game settings object, the points to time ratio. When a ship is destroyed the timer is increced by the earned points * the ratio.
-To do this, all I did was add to the delay of the object returned by the delayedCall. With the settings I have right now, destroying a ship on normal grants 1, 2, or 3 seconds, 
-while destorying a ship on hard grants 1/3, 2/3, or 1 second.
+For this one, I added a new property to the game settings object, the points to time ratio. When a ship is destroyed the timer is increced by the earned points * the ratio 
+seconds. To do this, all I did was add to the delay of the object returned by the delayedCall. With the settings I have right now, destroying a ship on normal grants 
+1/10 of the earned points in seconds, while hard grants 1/30th of a second per point.
 
 Total -> 10
+
+KNOWN BUGS:
+The explosion animation exists on top of the boundaries, if a ship is destoryed right at the edge of the canvas. 
+This was also a problem with the professor's normal rocket patrol example, so I figure it's fine.
 */
 
 let config = {

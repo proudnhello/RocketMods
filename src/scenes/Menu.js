@@ -47,7 +47,8 @@ class Menu extends Phaser.Scene{
           game.settings = {
             spaceshipSpeed: 3,
             gameTimer: 60000,
-            pointsToSecRatio: 1/10
+            pointsToSecRatio: 1/10,
+            smallSpeedMultiplier: 1.5
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    
@@ -57,7 +58,8 @@ class Menu extends Phaser.Scene{
           game.settings = {
             spaceshipSpeed: 4,
             gameTimer: 45000,
-            pointsToSecRatio: 1/30    
+            pointsToSecRatio: 1/30,
+            smallSpeedMultiplier: 2    
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    

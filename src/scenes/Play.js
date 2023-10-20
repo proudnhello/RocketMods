@@ -7,6 +7,7 @@ class Play extends Phaser.Scene{
         this.load.path = './assets/';
         this.load.image('rocket', "rocket.png");;
         this.load.image('spaceship', 'spaceship.png');
+        this.load.image('smallShip', 'smallShip.png');
         this.load.image('starfield', 'starfield.png');
         this.load.spritesheet('explosion', 'explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
@@ -17,6 +18,9 @@ class Play extends Phaser.Scene{
 
         // Green Rectangle at the top
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00ff00).setOrigin(0,0);
+
+        // The small ship is created up here b/c he is no longer the same color as the borders, and as such needs to be under them
+        this.smallShip01 = new SmallSpaceship(this, game.config.width + borderUISize*6, borderUISize*7 + borderPadding*6, 'smallShip', 0, 50).setOrigin(0, 0);
 
         // White borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
@@ -74,6 +78,7 @@ class Play extends Phaser.Scene{
             this.ship01.speedup(2);
             this.ship02.speedup(2);
             this.ship03.speedup(2);
+            this.smallShip01.speedup(4);
         }, null, this);
 
         // Creating the seconds left timer
@@ -83,12 +88,13 @@ class Play extends Phaser.Scene{
     }
 
     update() {
-        this.starfield.tilePositionX -= 2;
+        this.starfield.tilePositionX -= 4;
         if(!this.gameOver){
             this.p1Rocket.update();
             this.ship01.update();
             this.ship02.update();
             this.ship03.update();
+            this.smallShip01.update();
         }
 
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)){
@@ -107,6 +113,10 @@ class Play extends Phaser.Scene{
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset()
             this.shipExplosion(this.ship01)
+        }
+        if (this.checkCollision(this.p1Rocket, this.smallShip01)) {
+            this.p1Rocket.reset()
+            this.shipExplosion(this.smallShip01)
         }
 
         // Update the timer
