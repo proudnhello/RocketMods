@@ -9,12 +9,14 @@ class Play extends Phaser.Scene{
         this.load.image('spaceship', 'spaceship.png');
         this.load.image('smallShip', 'smallShip.png');
         this.load.image('starfield', 'starfield.png');
+        this.load.image('planet', 'planet.png');
         this.load.spritesheet('explosion', 'explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
 
     create(){
         // Scrolling background
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
+        this.planet = this.add.tileSprite(0, 0, 640, 480, 'planet').setOrigin(0, 0);
 
         // Green Rectangle at the top
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00ff00).setOrigin(0,0);
@@ -89,6 +91,7 @@ class Play extends Phaser.Scene{
 
     update() {
         this.starfield.tilePositionX -= 4;
+        this.planet.tilePositionX -= 1;
         if(!this.gameOver){
             this.p1Rocket.update();
             this.ship01.update();
@@ -148,7 +151,6 @@ class Play extends Phaser.Scene{
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
         this.explosionSelector = Math.floor(Math.random()*5)
-        console.log(this.explosionSelector)
         switch(this.explosionSelector){
             case 0:
                 this.sound.play('sfx_explosion0');
@@ -167,7 +169,6 @@ class Play extends Phaser.Scene{
                 break
         }
         
-
         // Increase the timer
         this.clock.delay += (ship.points * game.settings.pointsToSecRatio * 1000)
       }

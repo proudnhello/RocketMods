@@ -17,6 +17,9 @@ You can find these as explosion1-4.wav. All were made with https://sfxr.me/
 
 Add a seconds left timer (3)
 
+Implement parallax scrolling for the background (3)
+planet.png is closer than the starfield, and as such, moves much more slowly
+
 Implement a new timing/scoring mechanism that adds time to the clock for sucessful hits (5)
 For this one, I added a new property to the game settings object, the points to time ratio. When a ship is destroyed the timer is increced by the earned points * the ratio 
 seconds. To do this, all I did was add to the delay of the object returned by the delayedCall. With the settings I have right now, destroying a ship on normal grants 
@@ -26,7 +29,7 @@ Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster,
 Not remotely important, but I like my angry little small spaceship. He's cute :). He's also worth 50 points, and has a new property added to both him and the normal ships to 
 scale the explosion to fit him.
 
-Total -> 18
+Total -> 21 (just in case I lose a point for something dumb)
 
 KNOWN BUGS:
 The explosion animation exists on top of the boundaries, if a ship is destoryed right at the edge of the canvas. 
